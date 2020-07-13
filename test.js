@@ -51,15 +51,23 @@ function dropIt(ev) {
     ev.preventDefault();
     let sourceId = ev.dataTransfer.getData("text/plain");
     let sourceIdEl=document.getElementById(sourceId);
-    //let sourceIdParentEl=sourceIdEl.parentElement;
+    let sourceIdParentEl=sourceIdEl.parentElement;
 
     let targetEl=document.getElementById(ev.target.id);
-    //let targetParentEl=targetEl.parentElement;
+    let targetParentEl=targetEl.parentElement;
 
+    if (targetParentEl.id!==sourceIdParentEl.id){
+        if (targetEl.className === sourceIdEl.className ){
+            targetParentEl.appendChild(sourceIdEl);
+        }else{
+            targetEl.appendChild(sourceIdEl);
+        }
 
-    let holder=targetEl;
-    let holderText=holder.textContent;
+    }else{
+        let holder=targetEl;
 
-    targetEl.textContent=sourceIdEl.textContent;
-    sourceIdEl.textContent=holderText;
+        let holderText=holder.textContent;
+        targetEl.textContent=sourceIdEl.textContent;
+        sourceIdEl.textContent=holderText;
+    }
 }
