@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<!--<div>-->
+<!--    <div class="divToMove" id="divToMove">My task</div>-->
+<!--</div>-->
+
+<div class="board-layout">
+
+    <div class="left">
+        <div class="board-text">Asana clone</div>
+
+    </div>
+
+    <div id='boardlists' class="board-lists">
+        <div id='list1' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
+            <div class="list-title">
+                To Do
+            </div>
+
+            <div  id="card1" class="card" draggable="true" ondragstart="dragStart(event)">
+                Work on article
+            </div>
+            <div  id="card2" class="card" draggable="true" ondragstart="dragStart(event)">
+                Back up database
+            </div>
+            <div id="card3" class="card" draggable="true" ondragstart="dragStart(event)">
+                Build Lambda function
+            </div>
+            <div id="card4" class="card" draggable="true" ondragstart="dragStart(event)">
+                Work on course content
+            </div>
+            <div id="card5" class="card" draggable="true" ondragstart="dragStart(event)">
+                Debug SQL code
+            </div>
+            <div id="card6" class="card" draggable="true" ondragstart="dragStart(event)">
+                Create documentation
+            </div>
+            <div id="card7" class="card" draggable="true" ondragstart="dragStart(event)">
+                Duplicate DB
+            </div>
+
+        </div>
+<!--        <div  id='list2' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">-->
+<!--            <div  class="list-title">-->
+<!--                In Progress-->
+<!--            </div>-->
+<!--            <div id="card8" class="card" draggable="true" ondragstart="dragStart(event)">-->
+<!--                Write the CRUD functions-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div  id='list3' class="board-list"  ondrop="dropIt(event)" ondragover="allowDrop(event)">-->
+<!--            <div  class="list-title">-->
+<!--                Done-->
+<!--            </div>-->
+<!--            <div id="card9" class="card" draggable="true" ondragstart="dragStart(event)">-->
+<!--                Send project to the Git-->
+<!--            </div>-->
+
+<!--        </div>-->
+    </div>
+</div>
+</body>
+<script src="test.js"></script>
+</html>
