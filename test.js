@@ -1,5 +1,33 @@
 "use strict";
 
+let num = 4;
+localStorage.setItem('test',num);
+//localStorage.clear();
+let mainBlock = document.getElementById('boardlists');
+let div = document.createElement('div');
+let content;
+// for(var i in content){
+//     div.innerHTML = i;
+//     mainBlock.append(div);
+// }
+//div.innerHTML = content['div'];
+if (content = JSON.parse(localStorage.getItem('savedDiv')))
+{
+    content = JSON.parse(localStorage.getItem('savedDiv'))
+    for(var i in content){
+        console.log(content[i]);
+        div.innerHTML = content[i];
+        mainBlock.appendChild(div);
+    }
+}
+// content.prototype.forEach.call(function (item,i,content) {
+//     div.innerHTML = content['div'];
+// });
+
+//mainBlock.append(div);
+
+
+
 var block = document.querySelector('card');
 
 
@@ -13,15 +41,17 @@ addButton.onmouseout = function(){
 };
 
 
-let num = 4;
-addButton.onclick = function(event){
+// let num = 4;
+addButton.onclick = adding;
+
+    function adding(event){
     let mainBlock = document.getElementById('boardlists');
     let div = document.createElement('div');
-    if (document.getElementById(`list${num}`)) {
-        div.id = `list${num + 1}`;
-        num +=1;
+    if (document.getElementById(`list${parseInt(localStorage.getItem('test'))}`)) {
+        div.id = `list${parseInt(localStorage.getItem('test')) + 1}`;
+        localStorage.setItem('test', parseInt(localStorage.getItem('test')) + 1);
     }else{
-        div.id = `list${num}`;
+        div.id = `list${parseInt(localStorage.getItem('test'))}`;
     }
     div.className = 'board-list';
 
@@ -35,7 +65,35 @@ addButton.onclick = function(event){
     title.className = 'list-title';
     title.innerText = 'Custom';
     div.appendChild(title);
-};
+
+    //localStorage.setItem('savedDiv', div.outerHTML);
+
+    console.log(div);
+    // let json = JSON.stringify({'id': div.id, 'class': div.className,
+    //                                     'attrOnDrop': div.getAttribute('ondrop'),
+    //                                     'attrOnDragover': div.getAttribute('ondragover'),
+    //                                     'title':title.getAttribute('contenteditable'),
+    //                                     'titleClass':title.className,
+    //                                     'titleName':title.outerHTML});
+    let arr = [];
+    arr.push(div.outerHTML);
+    let json = JSON.stringify(arr);
+    console.log(json);
+    localStorage.setItem('savedDiv', json);
+}
+// let savedDiv = adding;
+// let json = JSON.stringify(savedDiv);
+// localStorage.setItem('savedDiv', json);
+
+
+// var card = document.getElementsByClassName('card');
+// // console.log(card);
+// card.forEach(
+//     element => addEventListener('dblclick', function (e) {
+//         element.setAttribute('contanteditable','true');
+//     }));
+
+
 
 let uris = ['https://i.pinimg.com/originals/75/a4/c2/75a4c2d1dc2dbce3342109e8270ff4f3.jpg', 'https://wallpaperaccess.com/full/215112.jpg', 'https://i.pinimg.com/originals/25/2d/e9/252de9410dba461a7f27d9b7eebad0e2.jpg'];
 
