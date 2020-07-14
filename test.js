@@ -1,41 +1,52 @@
 "use strict";
 
-// let kek = `sho nado, ${5+3}`;
-// alert(kek);
 var block = document.querySelector('card');
 
-// function changeColor() {
-//     block.style.backgroundColor = "green";
-// }
 
-block.onmousedown = function(event) {
-
-    let shiftX = event.clientX - block.getBoundingClientRect().left;
-    let shiftY = event.clientY - block.getBoundingClientRect().top;
-
-    block.style.position = 'absolute';
-    block.style.zIndex = 1000;
-    document.body.append(block);
-
-    moveAt(event.pageX, event.pageY);
-
-    function moveAt(pageX, pageY) {
-        block.style.left = pageX - shiftX + 'px';
-        block.style.top = pageY - shiftY + 'px';
-    }
-
-    function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
-    }
-
-    document.addEventListener('mousemove', onMouseMove);
-
-    block.onmouseup = function() {
-        document.removeEventListener('mousemove', onMouseMove);
-        block.onmouseup = null;
-    };
-
+var addButton = document.getElementById('add');
+addButton.onmouseover = function(){
+  addButton.style.opacity = '1';
 };
+
+addButton.onmouseout = function(){
+    addButton.style.opacity = '0.5';
+};
+
+
+let num = 4;
+addButton.onclick = function(event){
+    let mainBlock = document.getElementById('boardlists');
+    let div = document.createElement('div');
+    if (document.getElementById(`list${num}`)) {
+        div.id = `list${num + 1}`;
+        num +=1;
+    }else{
+        div.id = `list${num}`;
+    }
+    div.className = 'board-list';
+
+    div.setAttribute('ondrop','dropIt(event)');
+    div.setAttribute('ondragover','allowDrop(event)');
+
+    mainBlock.appendChild(div);
+
+    let title = document.createElement('div');
+    title.setAttribute('contenteditable', 'true');
+    title.className = 'list-title';
+    title.innerText = 'Custom';
+    div.appendChild(title);
+};
+
+let uris = ['https://i.pinimg.com/originals/75/a4/c2/75a4c2d1dc2dbce3342109e8270ff4f3.jpg', 'https://wallpaperaccess.com/full/215112.jpg', 'https://i.pinimg.com/originals/25/2d/e9/252de9410dba461a7f27d9b7eebad0e2.jpg'];
+
+function arrayRandElement(uris) {
+    let rand = Math.floor(Math.random() * uris.length);
+    return uris[rand];
+}
+document.body.style.backgroundImage = `url(${arrayRandElement(uris)})`;
+document.body.style.backgroundAttachment = 'fixed';
+
+
 
 block.ondragstart = function() {
     return false;

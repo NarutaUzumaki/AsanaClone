@@ -28,6 +28,7 @@ body{
     font-weight: bold;
     font-size: 28px;
     padding: 5px;
+    color: white;
 }
 .board-lists {
     display: grid;
@@ -59,4 +60,14 @@ body{
     box-shadow: 0 1px 0 rgba(9,30,66,.25);
     padding: 10px;
     cursor:pointer;
+}
+
+.addCard{
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    padding: 10px;
+    cursor:pointer;
+    width: 150px;
+    opacity: 0.7;
 }
